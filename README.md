@@ -1,2 +1,2 @@
 # varausjarjestelma
-Tilanvarausjärjestelmä
+Kooditehtävänä yksinkertainen tilanvarausjärjestelmä. 
