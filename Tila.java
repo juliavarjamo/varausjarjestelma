@@ -1,14 +1,15 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Luokka tilanvarausjärjestelmän tiloille.
+ */
 public class Tila {
-    // Attribuutit
     private String nimi;
     private int tilaId;
     private List<Varaus> varaukset;
     private List<String> varustus;
 
-    // Rakentaja
     public Tila(String nimi, int tilaId) {
         this.nimi = nimi;
         this.tilaId = tilaId;
@@ -33,37 +34,67 @@ public class Tila {
         return varustus;
     }
 
-    // Metodit
-    // Metodi tilan tietojen tulostamiseksi
+    /**
+     * Tulostaa tila-olion tiedot.
+     */
     public void tulostaTiedot() {
-        System.out.println("TilaID: " + tilaId);
-        System.out.println("Varaukset: ");
+        System.out.println("  TilaID: " + tilaId);
+        System.out.println("    Varaukset:");
         for (Varaus varaus : varaukset) {
-            varaus.tulostaTiedot();
+            System.out.println("      Aika: " + varaus.getAlkuaika() + " - " + varaus.getLoppuaika());
         }
-        System.out.println("Tilan varusteet: ");
+
+        System.out.println("    Tilan varusteet:");
         for (String varuste : varustus) {
-            System.out.println(" - " + varuste);
+            System.out.println("      - " + varuste);
         }
     }
 
-    // Metodi varauksen lisäämiselle 
+    /**
+     * Lisää varauksen tilalle.
+     * 
+     * @param varaus.
+     */
     public void lisaaVaraus(Varaus varaus) {
         varaukset.add(varaus);
     }
 
-    // Metodi varauksen poistamiselle
+
+    /**
+     * Poistaa varauksen tilalta.
+     * 
+     * @param varaus.
+     */
     public void poistaVaraus(Varaus varaus) {
-        varaukset.remove(varaus);
+        for (int i = 0; i < varaukset.size(); i++) {
+            Varaus v = varaukset.get(i);
+            if (v == varaus) {
+                varaukset.remove(i);
+                return;
+            }
+        }
     }
 
-    // Metodit varustuksen lisäämiselle tilaan
+    /**
+     * Lisää varusteita tilalle.
+     * 
+     * @param varuste.
+     */
     public void lisaaVarustus(String varuste) {
         varustus.add(varuste);
     }
 
-    // Metodi varustuksen poistamiselle tilasta 
+    /**
+     * Poistaa varusteen tilasta. 
+     * 
+     * @param varuste.
+     */
     public void poistaVarustus(String varuste) {
-        varustus.remove(varuste);
+        for (int i = 0; i < varustus.size(); i++) {
+            if (varuste == varustus.get(i)) {
+                varustus.remove(i);
+                return;
+            }
+        }
     }
 }

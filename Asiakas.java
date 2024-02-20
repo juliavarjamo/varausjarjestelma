@@ -1,14 +1,16 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Luokka tilanvarausjärjestelmän asiakkaille.
+ */
 public class Asiakas {
-    // Attribuutit
     private int asiakasId;
     private String nimi;
     private String sahkoposti;
+    // Lista asiakkaan varauksista
     private List<Varaus> varaukset;
 
-    // Rakentaja
     public Asiakas(int asiakasId, String nimi, String sahkoposti) {
         this.asiakasId = asiakasId;
         this.nimi = nimi;
@@ -33,25 +35,42 @@ public class Asiakas {
         return varaukset;
     }
 
-    // Metodit
-    // Metodi asiakkaan tietojen tulostamiseksi
+    /**
+     * Tulostaa asiakas-olion tiedot.
+     */
     public void tulostaTiedot() {
-        System.out.println("AsiakasID: " + asiakasId);
-        System.out.println("Nimi: " + nimi);
-        System.out.println("Sähköposti: " + sahkoposti);
-        System.out.println("Varaukset: ");
+        System.out.println("  Asiakasnumero: " + asiakasId);
+        System.out.println("    Nimi: " + nimi);
+        System.out.println("    Sähköposti: " + sahkoposti);
+        System.out.println("    Varaukset: ");
+
         for (Varaus varaus : varaukset) {
-            varaus.tulostaTiedot();
+            System.out.println("      - " + varaus.getVarausId());
         }
     }
 
-    // Metodi varauksen lisäämiselle 
+    /**
+     * Lisää varauksen asiakkaan tietoihin.
+     * 
+     * @param varaus.
+     */
     public void lisaaVaraus(Varaus varaus) {
         varaukset.add(varaus);
     }
 
-    // Metodi varauksen poistamiselle
+    
+    /**
+     * Poistaa varauksen asiakkaan tiedoista. 
+     * 
+     * @param varaus.
+     */
     public void poistaVaraus(Varaus varaus) {
-        varaukset.remove(varaus);
+        for (int i = 0; i < varaukset.size(); i++) {
+            Varaus v = varaukset.get(i);
+            if (v == varaus) {
+                varaukset.remove(i);
+                return;
+            }
+        }
     }
 }

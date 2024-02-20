@@ -1,12 +1,13 @@
+/**
+ * Luokka tilanvarausjärjestelmän varauksille.
+ */
 public class Varaus {
-    // Attribuutit
     private int varausId;
     private Tila tila;
     private Asiakas asiakas;
     private int alkuaika;
     private int loppuaika;
 
-    // Rakentaja
     public Varaus(int varausId, Tila tila, Asiakas asiakas, int alkuaika, int loppuaika) {
         this.varausId = varausId;
         this.tila = tila;
@@ -36,12 +37,13 @@ public class Varaus {
         return loppuaika;
     }
 
-    // Metodit
-    // Metodi varauksen tietojen tulostamiseksi
+    /**
+     * Tulostaa varaus-olion tiedot.
+     */
     public void tulostaTiedot() {
-        System.out.println("VarausID: " + varausId);
-        System.out.println("TilaID: " + tila.getTilaId());
-        System.out.println("Varaaja: " + asiakas.getNimi());
-        System.out.println("Varattu: " + alkuaika + " - " + loppuaika);
+        System.out.println("  Varausnumero: " + varausId);
+        System.out.println("    Asiakas: " + asiakas.getNimi());
+        System.out.println("    Tila: " + tila.getNimi());
+        System.out.println("    Aika: " + alkuaika + " - " + loppuaika);
     }
 }
